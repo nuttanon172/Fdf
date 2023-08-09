@@ -6,16 +6,22 @@
 /*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:26:11 by kaburale          #+#    #+#             */
-/*   Updated: 2023/08/09 18:11:47 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/08/09 19:09:41 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	malloc_check(int *arr, t_map *map)
+static void	malloc_check(t_map *map)
 {
-	if (!arr)
+	if (!map->z_arr || !map->color_arr)
+	{
+		if (map->z_arr)
+			free(map->z_arr);
+		if (map->color_arr)
+			free(map->color_arr);
 		exit_error_free(READ_ARRAY_ERROR, map);
+	}
 }
 
 static int	update_max(int pop, int max)
@@ -46,9 +52,8 @@ void	map_read_array(t_node_z **stack, t_map *map)
 
 	size = (map->width * map->height) * sizeof(int);
 	map->z_arr = (int *)malloczero(size);
-	malloc_check(map->z_arr, map);
 	map->color_arr = (int *)malloczero(size);
-	malloc_check(map->color_arr, map);
+	malloc_check(map);
 	i = (map->width * map->height) - 1;
 	while (1)
 	{
