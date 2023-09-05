@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   mlx_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/03 14:56:54 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/02 11:28:13 by ntairatt         ###   ########.fr       */
+/*   Created: 2023/08/16 12:32:54 by ntairatt          #+#    #+#             */
+/*   Updated: 2023/09/04 21:59:57 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	mlx_init(t_data *fdf)
 {
-	void	*p;
 
-	if (size == SIZE_MAX && nmemb == SIZE_MAX)
-		return (0);
-	if (size == 0 || nmemb == 0)
-		return (malloc(0));
-	p = malloc(nmemb * size);
-	if (!p)
-		return (0);
-	ft_bzero(p, nmemb * size);
-	return (p);
 }

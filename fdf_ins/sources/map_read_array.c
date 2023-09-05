@@ -6,7 +6,7 @@
 /*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:26:11 by kaburale          #+#    #+#             */
-/*   Updated: 2023/08/09 19:09:41 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/03 16:17:55 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,26 +75,26 @@ int	ft_atoi_sp(const char *str, t_map *map)
 {
 	int	i;
 	int	sign;
-	int	nb;
+	int	nbr;
 
 	i = 0;
 	sign = 1;
-	nb = 0;
+	nbr = 0;
 	while (str[i] == '\v' || str[i] == '\f' || str[i] == '\n' || str[i]
 		== '\r' || str[i] == '\t' || str[i] == ' ')
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
-			sign = sign * -1;
+			sign *= -1;
 		i++;
 	}
 	while ((str[i] >= '0') && (str[i] <= '9'))
 	{
-		nb = (nb * 10) + (str[i] - '0');
+		nbr = (nbr * 10) + (str[i] - '0');
 		i++;
 	}
 	if (str[i] != '\0')
 		exit_error_free(NEW_STACK_ERROR, map);
-	return (nb * sign);
+	return (nbr * sign);
 }

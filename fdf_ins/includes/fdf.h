@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:49:57 by kaburale          #+#    #+#             */
-/*   Updated: 2023/08/09 18:11:57 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/05 11:46:11 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # include "error.h"
 # include "libft.h"
 
-# define WIDTH		1920
-# define HEIGHT 	1080
+# define WIDTH		1000
+# define HEIGHT 	1000
 
 # define BG_COLOR	0x30221D
 # define LINE_COLOR	0xF7F5BC

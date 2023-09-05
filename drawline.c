@@ -1,44 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_draw_line.c                                    :+:      :+:    :+:   */
+/*   drawline.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/22 09:58:37 by kaburale          #+#    #+#             */
-/*   Updated: 2023/09/05 11:50:31 by ntairatt         ###   ########.fr       */
+/*   Created: 2023/09/03 17:29:26 by ntairatt          #+#    #+#             */
+/*   Updated: 2023/09/05 11:51:31 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include <fdf.h>
 
-int	absolute(int nb)
+int ft_absolute(int nbr)
 {
-	if (nb < 0)
-		return (-nb);
-	return (nb);
+    if (nbr < 0)
+        return (-nbr);
+    return (nbr);
 }
 
-static int	ft_ismin(int x, int y)
+int ft_step(int cmp1, int cmp2)
 {
-	if (x < y)
-		return (1);
-	else
-		return (-1);
+    if (cmp1 < cmp2)
+        return (1);
+    return (-1);
 }
 
-static void	point_init(t_point *d, t_point *u, t_point p1, t_point p2)
+
+void	point_init(t_point *d, t_point *u, t_point p1, t_point p2)
 {
-	u->x = ft_ismin(p1.x, p2.x);
-	u->y = ft_ismin(p1.y, p2.y);
-	d->x = absolute(p2.x - p1.x);
-	d->y = absolute(p2.y - p1.y);
+	u->x = ft_step(p1.x, p2.x);
+	u->y = ft_step(p1.y, p2.y);
+	d->x = ft_absolute(p2.x - p1.x);
+	d->y = ft_absolute(p2.y - p1.y);
 }
 
-static void	draw_pixel(t_data *data, int x, int y, int color)
+void	plot_pixel(t_data *data, int x, int y, int color)
 {
-	int	i;
-
 	i = (x * data->img.bits_per_pixel / 8) + (y * data->img.size_line);
 	data->mlx.img_data[i] = color;
 	data->mlx.img_data[++i] = color >> 8;
@@ -50,26 +48,28 @@ void	draw_line(t_point p1, t_point p2, t_data *data)
 	t_point	distance;
 	t_point	update;
 	t_point	cur;
-	int		diff[2];
+	int		error;
+	int		e2;
 
 	point_init(&distance, &update, p1, p2);
-	diff[0] = distance.x - distance.y;
+	error = distance.x - distance.y;
 	cur = p1;
 	while (1)
 	{
-		draw_pixel(data, cur.x, cur.y, get_color(cur, p1, p2, distance));
+		plot_pixel(data, cur.x, cur.y, get_color(cur, p1, p2, distance));
 		if (cur.x == p2.x && cur.y == p2.y)
 			break ;
-		diff[1] = diff[0] * 2;
-		if (diff[1] >= -distance.y)
+		e2 = 2 * error;
+		if (e2 > -distance.y)
 		{
-			diff[0] -= distance.y;
+			error -= distance.y;
 			cur.x += update.x;
 		}
-		if (diff[1] <= distance.x)
+		if (e2 < distance.x)
 		{
-			diff[0] += distance.x;
+			error += distance.x;
 			cur.y += update.y;
 		}
 	}
 }
+

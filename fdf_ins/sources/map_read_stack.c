@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_read_stack.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:27:57 by kaburale          #+#    #+#             */
-/*   Updated: 2023/08/09 17:46:52 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/05 10:26:58 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	line_to_stack(char **line_split, t_node_z **stack, t_map *map)
 	}
 	if (map->height == 0)
 		map->width = tmp_width;
-	else if (map->width != tmp_width)
+	if (map->width != tmp_width)
 		exit_error_free(SIZE_ERROR, map);
 }
 

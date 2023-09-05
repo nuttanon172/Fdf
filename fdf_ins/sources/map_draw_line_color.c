@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_draw_line_color.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaburale <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 09:58:54 by kaburale          #+#    #+#             */
-/*   Updated: 2023/06/22 09:58:56 by kaburale         ###   ########.fr       */
+/*   Updated: 2023/08/16 12:26:12 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static double	percent(int start, int end, int curr)
 	cur_point = curr - start;
 	distance = end - start;
 	if (distance == 0)
-		return (0);
+		return (1);
 	else
 		return (cur_point / distance);
 }

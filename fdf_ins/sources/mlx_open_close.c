@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_open_close.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 09:59:52 by kaburale          #+#    #+#             */
-/*   Updated: 2023/07/23 14:43:35 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/05 16:18:16 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,13 @@ static void	map_scale(t_data *data)
 {
 	int			a;
 	int			b;
-	int			height;
-	int			width;
-	int			z_abs;
 
-	height = HEIGHT;
-	width = WIDTH;
-	if (HEIGHT < 1000)
-		height = 1000;
-	if (WIDTH < 1000)
-		width = 1000;
-	a = width / data->map->width / 2;
-	b = height / data->map->height / 2;
+	a = WIDTH / 2 / data->map->width;
+	b = HEIGHT / 2 / data->map->height;
 	if (a < b)
 		data->map->scale = a;
 	else
 		data->map->scale = b;
-	z_abs = absolute(data->map->z_max);
-	if (z_abs >= (data->map->height / 2))
-		data->map->scale = HEIGHT / data->map->z_max / 3;
 }
 
 static int	win_exit_cross(t_data *data)

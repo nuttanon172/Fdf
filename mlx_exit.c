@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   mlx_exit.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/03 14:56:54 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/02 11:28:13 by ntairatt         ###   ########.fr       */
+/*   Created: 2023/09/02 13:03:35 by ntairatt          #+#    #+#             */
+/*   Updated: 2023/09/03 23:06:11 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	win_cross(t_data *data)
 {
-	void	*p;
+	free_ptr(data->map);
+	mlx_destroy_image(data->mlx.mlx, data->img.img_ptr);
+	mlx_destroy_window(data->mlx.mlx, data->mlx.window);
+	exit(0);
+}
 
-	if (size == SIZE_MAX && nmemb == SIZE_MAX)
-		return (0);
-	if (size == 0 || nmemb == 0)
-		return (malloc(0));
-	p = malloc(nmemb * size);
-	if (!p)
-		return (0);
-	ft_bzero(p, nmemb * size);
-	return (p);
+int	key_esc(int keycode, t_data *data)
+{
+	if (keycode == 53)
+	{
+		free_ptr(data->map);
+		mlx_destroy_image(data->mlx.mlx, data->img.img_ptr);
+		mlx_destroy_window(data->mlx.mlx, data->mlx.window);
+		exit(0);
+	}
+	return(0);
 }
