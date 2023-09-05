@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 15:19:33 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/05 15:56:06 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/05 17:12:03 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_img
 	void	*img_ptr;
 	char	*img_addr;
 	int		bits_per_pixel;
-	int		line_length;
+	int		line_len;
 	int		endian;
 }				t_img;
 
@@ -97,5 +97,11 @@ void		read_map(t_node_z **stack, t_map *map, int fd);
 
 /* read_stack */
 void		read_stack(t_node_z **stack, t_map *map);
+
+/* mlx_init */
+void		map_scale(t_map *map);
+void		mlx_init(t_data *fdf);
+void		win_cross(t_data *data);
+int			key_esc(int keycode, t_data *data);
 
 #endif
