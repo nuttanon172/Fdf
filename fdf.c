@@ -6,7 +6,7 @@
 /*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 16:52:12 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/05 15:56:52 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/07 22:14:07 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ int	main(int ac, char **av)
 	if (fd < 0)
 		exit_error("Error: Open file error");
 	fdf.stack = NULL;
-	fdf.map = map_int(fdf.map);
-	add_stack(fdf.stack, fdf.map);
-	read_stack(fdf.stack, fdf.map);
-	mlx
+	map_init(&fdf);
+	read_map(&fdf.stack, fdf.map, fd);
+	read_stack(&fdf.stack, fdf.map);
+	mlx_fdf(&fdf);
 	return (0);
 }
 

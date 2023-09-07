@@ -6,26 +6,25 @@
 /*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:29:26 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/05 11:51:31 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/07 23:14:11 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fdf.h>
+#include "fdf.h"
 
-int ft_absolute(int nbr)
+int	ft_absolute(int nbr)
 {
-    if (nbr < 0)
-        return (-nbr);
-    return (nbr);
+	if (nbr < 0)
+		return (-nbr);
+	return (nbr);
 }
 
-int ft_step(int cmp1, int cmp2)
+int	ft_step(int cmp1, int cmp2)
 {
-    if (cmp1 < cmp2)
-        return (1);
-    return (-1);
+	if (cmp1 < cmp2)
+		return (1);
+	return (-1);
 }
-
 
 void	point_init(t_point *d, t_point *u, t_point p1, t_point p2)
 {
@@ -35,15 +34,17 @@ void	point_init(t_point *d, t_point *u, t_point p1, t_point p2)
 	d->y = ft_absolute(p2.y - p1.y);
 }
 
-void	plot_pixel(t_data *data, int x, int y, int color)
+void	plot_pixel(t_data *fdf, int x, int y, int color)
 {
-	i = (x * data->img.bits_per_pixel / 8) + (y * data->img.size_line);
-	data->mlx.img_data[i] = color;
-	data->mlx.img_data[++i] = color >> 8;
-	data->mlx.img_data[++i] = color >> 16;
+	int	i;
+
+	i = (x * fdf->img.bits_per_pixel / 8) + (y * fdf->img.line_len);
+	fdf->img.img_addr[i] = color;
+	fdf->img.img_addr[++i] = color >> 8;
+	fdf->img.img_addr[++i] = color >> 16;
 }
 
-void	draw_line(t_point p1, t_point p2, t_data *data)
+void	bresenham(t_point p1, t_point p2, t_data *fdf)
 {
 	t_point	distance;
 	t_point	update;
@@ -56,7 +57,7 @@ void	draw_line(t_point p1, t_point p2, t_data *data)
 	cur = p1;
 	while (1)
 	{
-		plot_pixel(data, cur.x, cur.y, get_color(cur, p1, p2, distance));
+		plot_pixel(fdf, cur.x, cur.y, get_color(cur, p1, p2, distance));
 		if (cur.x == p2.x && cur.y == p2.y)
 			break ;
 		e2 = 2 * error;
@@ -72,4 +73,3 @@ void	draw_line(t_point p1, t_point p2, t_data *data)
 		}
 	}
 }
-

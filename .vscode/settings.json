@@ -1,8 +1,10 @@
 {
-    "files.associations": {
-        "fdf.h": "c",
-    },
-    "[c]": {
-        "editor.defaultFormatter": "keyhr.42-c-format"
-    },
+  "files.associations": {
+	"fdf.h": "c",
+	"errno.h": "c",
+	"stdio.h": "c"
+},
+  "[c]": {
+    "editor.defaultFormatter": "keyhr.42-c-format"
+  }
 }

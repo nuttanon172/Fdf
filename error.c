@@ -3,21 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:49:43 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/03 18:23:07 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/05 22:37:10 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void    exit_error(char *str)
+void	exit_error(char *str)
 {
 	if (str)
 	{
 		ft_putendl_fd(str, 2);
-    	exit(1);
+		exit(1);
+	}
+}
+
+void	free_map(t_map *map)
+{
+	if (map)
+	{
+		if (map->z)
+			free(map->z);
+		if (map->color)
+			free(map->color);
+		free(map);
 	}
 }
 
@@ -25,14 +37,7 @@ void	map_error(char *str, t_map *map, t_node_z *node)
 {
 	t_node_z	*tmp;
 
-	if (map)
-	{
-		if (map->z_arr)
-			free(map->z_arr);
-		if (map->color_arr)
-			free(map->color_arr);
-		free(map);
-	}
+	free_map(map);
 	if (node)
 	{
 		while (node)
@@ -42,7 +47,7 @@ void	map_error(char *str, t_map *map, t_node_z *node)
 			node = tmp;
 		}
 	}
-    exit_error(str);
+	exit_error(str);
 }
 
 void	free_2d(char **var)

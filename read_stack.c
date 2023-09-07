@@ -6,18 +6,11 @@
 /*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 15:43:26 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/03 22:53:33 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/07 23:19:55 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-int	ft_max(int max, int new)
-{
-	if (max < new)
-		return (new);
-	return (max);
-}
 
 t_node_z	*pop(t_node_z **stack)
 {
@@ -27,8 +20,7 @@ t_node_z	*pop(t_node_z **stack)
 	if (stack && *stack)
 	{
 		node = *stack;
-		node->next = NULL;
-		*stack = *stack->next;
+		*stack = (*stack)->next;
 	}
 	return (node);
 }
@@ -41,14 +33,13 @@ void	read_stack(t_node_z **stack, t_map *map)
 	map->z = (int *)malloc((map->width * map->height) * sizeof(int));
 	map->color = (int *)malloc((map->width * map->height) * sizeof(int));
 	if (!(map->z) || !(map->color))
-		map_error("Error: Read Stack Error");
+		map_error("Error: Read Stack Error", map, *stack);
 	i = map->width * map->height - 1;
 	while (i)
 	{
 		node = pop(stack);
 		map->z[i] = node->z;
-		map->color = node->color;
-		map->z_max = ft_max(map->z_max, map->z[i]);
+		map->color[i] = node->color;
 		free(node);
 		i--;
 	}

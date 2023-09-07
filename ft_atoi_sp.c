@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi_sp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:36:17 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/03 18:37:48 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/07 22:26:04 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ int	ft_isvalid(char *s, int base)
 
 	i = 0;
 	digit = 0;
-	while ((s[i] == ' ') || (s[i] == '\n') || (s[i] == '\t') || (s[i] == '\v')
-		|| (s[i] == '\f') || (s[i] == '\r'))
+	while ((s[i] == ' ') || (s[i] >= 9 && s[i] <= 13))
 		i++;
 	if (base == 16 && !ft_ishex(&s[i]))
 		return (0);
@@ -74,8 +73,7 @@ int	ft_atoi_base(char *str, int base_num)
 	result = 0;
 	i = 0;
 	sign = 1;
-	while ((str[i] == ' ') || (str[i] == '\n') || (str[i] == '\t')
-		|| (str[i] == '\v') || (str[i] == '\f') || (str[i] == '\r'))
+	while ((str[i] == ' ') || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] == '-')
 		sign *= -1;
@@ -101,8 +99,7 @@ int	ft_atoi_sp(const char *str, t_map *map, t_node_z **stack)
 	i = 0;
 	sign = 1;
 	nbr = 0;
-	while (str[i] == '\v' || str[i] == '\f' || str[i] == '\n' || str[i]
-		== '\r' || str[i] == '\t' || str[i] == ' ')
+	while ((str[i] == ' ') || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
@@ -115,7 +112,5 @@ int	ft_atoi_sp(const char *str, t_map *map, t_node_z **stack)
 		nbr = (nbr * 10) + (str[i] - '0');
 		i++;
 	}
-	if (str[i] != '\0')
-		map_error("Error: Add Stack Error", map, *stack);
 	return (nbr * sign);
 }

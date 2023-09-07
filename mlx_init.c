@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 12:32:54 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/05 17:56:26 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/07 23:00:03 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	map_scale(t_data *map)
+void	map_scale(t_map *map)
 {
 	int	height;
 	int	width;
@@ -33,36 +33,38 @@ void	map_scale(t_data *map)
 		map->scale = h;
 }
 
-void	mlx_init(t_data *fdf)
+void	mlx_fdf(t_data *fdf)
 {
 	fdf->mlx.mlx = mlx_init();
 	fdf->mlx.window = mlx_new_window(fdf->mlx.mlx, WIDTH, HEIGHT, "FDF");
-	fdf->img.img_ptr = mlx_new_image(fdf.mlx, WIDTH, HEIGHT);
-	fdf->img.img_addr = mlx_get_data_addr(fdf->img.img_ptr, 
-			fdf->img.bits_per_pixel, fdf->img.line_length, fdf->img.endian);
-	mlx_key_hook(fdf->img.img_ptr, key_esc, data);
-	mlx_hook(fdf->mlx.window, 17, 0, win_cross, data);
+	fdf->img.img_ptr = mlx_new_image(fdf->mlx.mlx, WIDTH, HEIGHT);
+	fdf->img.img_addr = mlx_get_data_addr(fdf->img.img_ptr,
+			&fdf->img.bits_per_pixel, &fdf->img.line_len, &fdf->img.endian);
 	map_scale(fdf->map);
-	/* map_draw here!!!*/
+	draw_map(fdf);
+	mlx_put_image_to_window(fdf->mlx.mlx, fdf->mlx.window, fdf->img.img_ptr,
+				0, 0);
+	mlx_key_hook(fdf->mlx.window, key_esc, fdf);
+	mlx_hook(fdf->mlx.window, 17, 0, win_cross, fdf);
 	mlx_loop(fdf->mlx.mlx);
 }
 
-void	win_cross(t_data *data)
+void	win_cross(t_data *fdf)
 {
-	free_ptr(data->map);
-	mlx_destroy_image(data->mlx.mlx, data->img.img_ptr);
-	mlx_destroy_window(data->mlx.mlx, data->mlx.window);
+	free_map(fdf->map);
+	mlx_destroy_image(fdf->mlx.mlx, fdf->img.img_ptr);
+	mlx_destroy_window(fdf->mlx.mlx, fdf->mlx.window);
 	exit(0);
 }
 
-int	key_esc(int keycode, t_data *data)
+int	key_esc(int keycode, t_data *fdf)
 {
 	if (keycode == 53)
 	{
-		free_ptr(data->map);
-		mlx_destroy_image(data->mlx.mlx, data->img.img_ptr);
-		mlx_destroy_window(data->mlx.mlx, data->mlx.window);
+		free_map(fdf->map);
+		mlx_destroy_image(fdf->mlx.mlx, fdf->img.img_ptr);
+		mlx_destroy_window(fdf->mlx.mlx, fdf->mlx.window);
 		exit(0);
 	}
-	return(0);
+	return (0);
 }
