@@ -6,7 +6,7 @@
 /*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:29:26 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/07 23:14:11 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/08 13:31:09 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ int	ft_step(int cmp1, int cmp2)
 	return (-1);
 }
 
-void	point_init(t_point *d, t_point *u, t_point p1, t_point p2)
+void	point_init(t_point *p1, t_point *p2, t_point *delta)
 {
-	u->x = ft_step(p1.x, p2.x);
-	u->y = ft_step(p1.y, p2.y);
-	d->x = ft_absolute(p2.x - p1.x);
-	d->y = ft_absolute(p2.y - p1.y);
+	p1->x_update = ft_step(p1->x, p2->x);
+	p1->y_update = ft_step(p1->y, p2->y);
+	delta->x = ft_absolute(p2->x - p1->x);
+	delta->y = ft_absolute(p2->y - p2->y);
 }
 
 void	plot_pixel(t_data *fdf, int x, int y, int color)
@@ -46,30 +46,29 @@ void	plot_pixel(t_data *fdf, int x, int y, int color)
 
 void	bresenham(t_point p1, t_point p2, t_data *fdf)
 {
-	t_point	distance;
-	t_point	update;
 	t_point	cur;
+	t_point	delta;
 	int		error;
 	int		e2;
 
-	point_init(&distance, &update, p1, p2);
-	error = distance.x - distance.y;
+	point_init(&p1, &p2, &delta);
+	error = delta.x - delta.y;
 	cur = p1;
 	while (1)
 	{
-		plot_pixel(fdf, cur.x, cur.y, get_color(cur, p1, p2, distance));
+		plot_pixel(fdf, cur.x, cur.y, get_color(cur, p1, p2, delta));
 		if (cur.x == p2.x && cur.y == p2.y)
 			break ;
 		e2 = 2 * error;
-		if (e2 > -distance.y)
+		if (e2 > -delta.y)
 		{
-			error -= distance.y;
-			cur.x += update.x;
+			error -= delta.y;
+			cur.x += p1.x_update;
 		}
-		if (e2 < distance.x)
+		if (e2 < delta.x)
 		{
-			error += distance.x;
-			cur.y += update.y;
+			error += delta.x;
+			cur.y += p1.y_update;
 		}
 	}
 }

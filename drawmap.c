@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   drawmap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:45:54 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/08 13:10:59 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/08 13:16:47 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	draw_map(t_data *fdf)
 {
 	int	x;
 	int	y;
-	t_node_z	*cur;
+
 	y = 0;
 	set_bg(fdf);
 	while (y < fdf->map->height)

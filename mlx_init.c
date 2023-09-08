@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 12:32:54 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/08 13:13:45 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/08 13:16:27 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	mlx_fdf(t_data *fdf)
 	map_scale(fdf->map);
 	draw_map(fdf);
 	mlx_put_image_to_window(fdf->mlx.mlx, fdf->mlx.window, fdf->img.img_ptr,
-				0, 0);
+		0, 0);
 	mlx_key_hook(fdf->mlx.window, key_esc, fdf);
 	mlx_hook(fdf->mlx.window, 17, 0, win_cross, fdf);
 	mlx_loop(fdf->mlx.mlx);

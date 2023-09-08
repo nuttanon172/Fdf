@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 15:19:33 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/08 13:14:06 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/08 13:49:01 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,12 @@
 
 typedef struct s_point
 {
-	int	x;
-	int	y;
-	int	z;
-	int	x_init;
-	int	y_init;
-	int	x_end;
-	int	y_end;
-	int	color;
+	int		x;
+	int		y;
+	int		z;
+	int		x_update;
+	int		y_update;
+	int		color;
 }				t_point;
 
 typedef struct s_node_z
