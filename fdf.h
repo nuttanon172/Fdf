@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 15:19:33 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/07 22:29:00 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/08 13:14:06 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define WIDTH 1000
 # define HEIGHT 1000
-# define BG_COLOR	0x30221D
+# define BG_COLOR 0x30221D
 # define LINE_COLOR	0xF7F5BC
 
 # include <stdio.h>
@@ -102,7 +102,7 @@ void		read_stack(t_node_z **stack, t_map *map);
 /* mlx_init */
 void		map_scale(t_map *map);
 void		mlx_fdf(t_data *fdf);
-void		win_cross(t_data *data);
+int			win_cross(t_data *data);
 int			key_esc(int keycode, t_data *data);
 
 /* drawmap */

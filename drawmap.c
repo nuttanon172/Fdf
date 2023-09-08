@@ -3,25 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   drawmap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:45:54 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/07 23:10:28 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/08 13:10:59 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void	iso(int *x, int *y, int z)
-{
-	int	tmp_x;
-	int	tmp_y;
-
-	tmp_x = *x;
-	tmp_y = *y;
-	*x = (tmp_x - tmp_y) * cos(0.46373398);
-	*y = -z + (tmp_x + tmp_y) * sin(0.46373398);
-}
 
 void	set_bg(t_data *fdf)
 {
@@ -39,6 +28,17 @@ void	set_bg(t_data *fdf)
 	}
 }
 
+void	iso(int *x, int *y, int z)
+{
+	int	tmp_x;
+	int	tmp_y;
+
+	tmp_x = *x;
+	tmp_y = *y;
+	*x = (tmp_x - tmp_y) * cos(0.46373398);
+	*y = -z + (tmp_x + tmp_y) * sin(0.46373398);
+}
+
 t_point	get_point(int x, int y, t_data *fdf)
 {
 	t_point	p;
@@ -47,7 +47,7 @@ t_point	get_point(int x, int y, t_data *fdf)
 	i = (y * fdf->map->width) + x;
 	p.x = x;
 	p.y = y;
-	p.z = fdf->stack->z;
+	p.z = fdf->map->z[i];
 	if (fdf->stack->color == -1)
 		p.color = LINE_COLOR;
 	else
@@ -72,7 +72,7 @@ void	draw_map(t_data *fdf)
 {
 	int	x;
 	int	y;
-
+	t_node_z	*cur;
 	y = 0;
 	set_bg(fdf);
 	while (y < fdf->map->height)
@@ -83,7 +83,7 @@ void	draw_map(t_data *fdf)
 			if (x != fdf->map->width - 1)
 				bresenham(projection(get_point(x, y, fdf), fdf),
 					projection(get_point(x + 1, y, fdf), fdf), fdf);
-			if (y != fdf->map->width - 1)
+			if (y != fdf->map->height - 1)
 				bresenham(projection(get_point(x, y, fdf), fdf),
 					projection(get_point(x, y + 1, fdf), fdf), fdf);
 			x++;

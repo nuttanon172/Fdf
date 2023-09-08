@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 12:32:54 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/07 23:00:03 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/08 13:13:45 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	mlx_fdf(t_data *fdf)
 	mlx_loop(fdf->mlx.mlx);
 }
 
-void	win_cross(t_data *fdf)
+int	win_cross(t_data *fdf)
 {
 	free_map(fdf->map);
 	mlx_destroy_image(fdf->mlx.mlx, fdf->img.img_ptr);
