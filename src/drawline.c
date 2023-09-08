@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   drawline.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:29:26 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/08 13:31:09 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/08 14:15:11 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_absolute(int nbr)
 {
 	if (nbr < 0)
-		return (-nbr);
+		return (nbr * -1);
 	return (nbr);
 }
 
@@ -31,7 +31,7 @@ void	point_init(t_point *p1, t_point *p2, t_point *delta)
 	p1->x_update = ft_step(p1->x, p2->x);
 	p1->y_update = ft_step(p1->y, p2->y);
 	delta->x = ft_absolute(p2->x - p1->x);
-	delta->y = ft_absolute(p2->y - p2->y);
+	delta->y = ft_absolute(p2->y - p1->y);
 }
 
 void	plot_pixel(t_data *fdf, int x, int y, int color)
