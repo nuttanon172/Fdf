@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi_sp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:36:17 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/08 12:46:54 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/09 10:45:51 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,11 @@ int	ft_atoi_base(char *str, int base_num)
 {
 	int	result;
 	int	i;
-	int	sign;
 
 	result = 0;
 	i = 0;
-	sign = 1;
 	while ((str[i] == ' ') || (str[i] >= 9 && str[i] <= 13))
 		i++;
-	if (str[i] == '-')
-		sign *= -1;
 	if (str[i] == '+' || str[i] == '-')
 		i++;
 	if (!ft_ishex(str) && base_num == 16)
@@ -85,29 +81,4 @@ int	ft_atoi_base(char *str, int base_num)
 		i++;
 	}
 	return ((int)(result));
-}
-
-int	ft_atoi_sp(const char *str, t_map *map, t_node_z **stack)
-{
-	int	i;
-	int	sign;
-	int	nbr;
-
-	i = 0;
-	sign = 1;
-	nbr = 0;
-	while ((str[i] == ' ') || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
-	}
-	while ((str[i] >= '0') && (str[i] <= '9'))
-	{
-		nbr = (nbr * 10) + (str[i] - '0');
-		i++;
-	}
-	return (nbr * sign);
 }

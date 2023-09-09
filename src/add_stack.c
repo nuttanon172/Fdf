@@ -6,7 +6,7 @@
 /*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:35:05 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/07 22:53:23 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/09 10:48:04 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,17 @@ t_node_z	*new_node(char *str, t_map *map, t_node_z **stack)
 	if (!node)
 		map_error("Error: Add Stack Error", map, *stack);
 	nbr = ft_split(str, ',');
-	if (!nbr || !ft_isvalid(nbr[0], 10) || (nbr[1] && ft_isvalid(nbr[1], 16)))
+	if (!nbr || !ft_isvalid(nbr[0], 10) || (nbr[1] && !ft_isvalid(nbr[1], 16)))
 	{
 		free(node);
 		map_error("Error: Add Stack Error", map, *stack);
 	}
-	node->z = ft_atoi_sp(nbr[0], map, stack);
+	node->z = ft_atoi(nbr[0]);
 	node->color = -1;
 	if (nbr[1])
 		node->color = ft_atoi_base(nbr[1], 16);
 	node->next = NULL;
+	free_2d(nbr);
 	return (node);
 }
 

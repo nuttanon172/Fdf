@@ -6,7 +6,7 @@
 /*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:45:54 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/08 13:16:47 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/09 10:51:23 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_point	get_point(int x, int y, t_data *fdf)
 	if (fdf->stack->color == -1)
 		p.color = LINE_COLOR;
 	else
-		p.color = fdf->stack->color;
+		p.color = fdf->map->color[i];
 	return (p);
 }
 

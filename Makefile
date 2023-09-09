@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+         #
+#    By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/16 13:59:49 by ntairatt          #+#    #+#              #
-#    Updated: 2023/09/08 14:19:42 by ntairatt         ###   ########.fr        #
+#    Updated: 2023/09/09 11:54:02 by ntairatt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,18 +18,16 @@ CFLAGS	=	-Wall -Wextra -Werror -I$(LIBFT_DIR) -I$(MLX_DIR) -Iinclude
 
 FRAMEWORK = -framework OpenGL -framework AppKit
 
-SRCS	=	fdf.c \
-			add_stack.c \
-			drawline.c \
-			drawmap.c \
-			error.c \
-			ft_atoi_sp.c \
-			linear_gradient.c \
-			map_init.c \
-			mlx_init.c \
-			read_stack.c \
-
-SRCS_DIR = src/
+SRCS	=	src/fdf.c \
+			src/add_stack.c \
+			src/drawline.c \
+			src/drawmap.c \
+			src/error.c \
+			src/ft_atoi_sp.c \
+			src/linear_gradient.c \
+			src/map_init.c \
+			src/mlx_init.c \
+			src/read_stack.c
 
 MLX	=	mlx/libmlx.a
 MLX_DIR	=	mlx/
@@ -41,7 +39,7 @@ RM	=	rm -rf
 $(NAME):
 	@make -C libft
 	@make -C mlx
-	$(CC) $(CFLAGS) $(LIBFT) $(MLX) $(addprefix $(SRCS_DIR), $(SRCS)) $(FRAMEWORK) -o $(NAME)
+	@$(CC) $(CFLAGS) $(LIBFT) $(MLX) $(SRCS) $(FRAMEWORK) -o $(NAME)
 
 .PHONY: all clean fclean re norm
 all: $(NAME)
@@ -56,3 +54,7 @@ fclean: clean
 re: clean all
 
 norm:
+	@make norm -C libft
+	@echo "---------------- FDF -----------------------"
+	@norminette include src
+	@echo "------------------------------------------\n"
