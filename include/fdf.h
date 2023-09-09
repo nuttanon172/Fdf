@@ -6,7 +6,7 @@
 /*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 15:19:33 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/09 17:37:30 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/09 18:13:52 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ int			ft_ishex(char *s);
 int			ft_hexnbr(char c, int base_num);
 int			ft_format(char *s, int base);
 int			ft_color(char *str, int base_num);
-int			ft_atoi_sp(const char *str);
 
 /* push_stack */
 t_node_z	*new_node(char *str, t_map *map, t_node_z **stack);
