@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+         #
+#    By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/16 13:59:49 by ntairatt          #+#    #+#              #
-#    Updated: 2023/09/09 17:14:24 by ntairatt         ###   ########.fr        #
+#    Updated: 2023/09/09 17:50:54 by ntairatt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ CFLAGS	=	-Wall -Wextra -Werror -I$(LIBFT_DIR) -I$(MLX_DIR) -Iinclude
 FRAMEWORK = -framework OpenGL -framework AppKit
 
 SRCS	=	src/fdf.c \
-			src/push_stack.c \
 			src/drawline.c \
 			src/drawmap.c \
 			src/error.c \
@@ -27,6 +26,7 @@ SRCS	=	src/fdf.c \
 			src/linear_gradient.c \
 			src/map_init.c \
 			src/mlx_init.c \
+			src/read_map.c \
 			src/read_stack.c
 
 MLX	=	mlx/libmlx.a

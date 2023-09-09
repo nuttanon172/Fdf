@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 15:19:33 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/09 16:59:09 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/09 17:37:30 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,4 +116,5 @@ int			get_color(t_point cur, t_point start, t_point end, t_point delta);
 /* mlx_init */
 void		map_init(t_data *fdf);
 int			ft_absolute(int nbr);
+
 #endif
