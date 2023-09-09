@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 15:19:33 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/09 11:55:35 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/09 16:59:09 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # define WIDTH 1000
 # define HEIGHT 1000
-# define BG_COLOR 0x30221D
-# define LINE_COLOR	0xF7F5BC
+# define BG_COLOR 0x22211b
+# define LINE_COLOR	0x00CC66
 
 # include <stdio.h>
 # include <unistd.h>
@@ -83,15 +83,15 @@ void		free_2d(char **var);
 
 /* ft_atoi_sp */
 int			ft_ishex(char *s);
-int			base_check(char c, int base_num);
-int			ft_isvalid(char *s, int base);
-int			ft_atoi_base(char *str, int base_num);
+int			ft_hexnbr(char c, int base_num);
+int			ft_format(char *s, int base);
+int			ft_color(char *str, int base_num);
 int			ft_atoi_sp(const char *str);
 
-/* add_stack */
+/* push_stack */
 t_node_z	*new_node(char *str, t_map *map, t_node_z **stack);
-void		add_stack(t_node_z **stack, t_node_z *new);
-void		add_line(char **line_sp, t_node_z **stack, t_map *map);
+int			push(t_node_z **stack, t_node_z *new);
+void		add_line(char **line_sp, char *line, t_node_z **stack, t_map *map);
 void		read_map(t_node_z **stack, t_map *map, int fd);
 
 /* read_stack */
@@ -115,5 +115,5 @@ int			get_color(t_point cur, t_point start, t_point end, t_point delta);
 
 /* mlx_init */
 void		map_init(t_data *fdf);
-
+int			ft_absolute(int nbr);
 #endif

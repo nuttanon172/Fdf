@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_sp.c                                       :+:      :+:    :+:   */
+/*   ft_color.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:36:17 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/09 10:45:51 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/09 15:58:23 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_ishex(char *s)
 	return (0);
 }
 
-int	base_check(char c, int base_num)
+int	ft_hexnbr(char c, int base_num)
 {
 	char	*base_char;
 	int		i;
@@ -35,7 +35,7 @@ int	base_check(char c, int base_num)
 	return (-1);
 }
 
-int	ft_isvalid(char *s, int base)
+int	ft_format(char *s, int base)
 {
 	size_t	i;
 	size_t	digit;
@@ -44,13 +44,13 @@ int	ft_isvalid(char *s, int base)
 	digit = 0;
 	while ((s[i] == ' ') || (s[i] >= 9 && s[i] <= 13))
 		i++;
+	if (s[i] == '+' || s[i] == '-')
+		i++;
 	if (base == 16 && !ft_ishex(&s[i]))
 		return (0);
 	if (base == 16)
 		i += 2;
-	else if (base == 10 && (s[i] == '-' || s[i] == '+'))
-		i++;
-	while (base_check(s[i], base) >= 0)
+	while (ft_hexnbr(s[i], base) >= 0)
 	{
 		i++;
 		digit++;
@@ -61,7 +61,7 @@ int	ft_isvalid(char *s, int base)
 		return (0);
 }
 
-int	ft_atoi_base(char *str, int base_num)
+int	ft_color(char *str, int base_num)
 {
 	int	result;
 	int	i;
@@ -73,12 +73,12 @@ int	ft_atoi_base(char *str, int base_num)
 	if (str[i] == '+' || str[i] == '-')
 		i++;
 	if (!ft_ishex(str) && base_num == 16)
-		return (0);
+		return (-1);
 	i += 2;
-	while (base_check(str[i], base_num) >= 0)
+	while (ft_hexnbr(str[i], base_num) >= 0)
 	{
-		result = (result * base_num) + (base_check(str[i], base_num));
+		result = (result * base_num) + (ft_hexnbr(str[i], base_num));
 		i++;
 	}
-	return ((int)(result));
+	return (result);
 }

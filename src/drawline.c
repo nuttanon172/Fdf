@@ -6,7 +6,7 @@
 /*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:29:26 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/08 14:15:11 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/09 17:02:28 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,13 @@ void	plot_pixel(t_data *fdf, int x, int y, int color)
 {
 	int	i;
 
-	i = (x * fdf->img.bits_per_pixel / 8) + (y * fdf->img.line_len);
-	fdf->img.img_addr[i] = color;
-	fdf->img.img_addr[++i] = color >> 8;
-	fdf->img.img_addr[++i] = color >> 16;
+	if ((x >= 0 && x < WIDTH) && (y >= 0 && y < HEIGHT))
+	{
+		i = (x * fdf->img.bits_per_pixel / 8) + (y * fdf->img.line_len);
+		fdf->img.img_addr[i] = color;
+		fdf->img.img_addr[++i] = color >> 8;
+		fdf->img.img_addr[++i] = color >> 16;
+	}
 }
 
 void	bresenham(t_point p1, t_point p2, t_data *fdf)

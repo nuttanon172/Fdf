@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:49:43 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/05 22:37:10 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/09 16:34:31 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,10 @@ void	free_2d(char **var)
 	int	i;
 
 	i = 0;
-	while (var[i])
-		free(var[i++]);
-	free(var);
+	if (var)
+	{
+		while (var[i])
+			free(var[i++]);
+		free(var);
+	}
 }

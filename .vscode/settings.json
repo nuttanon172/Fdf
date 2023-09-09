@@ -1,9 +1,10 @@
 {
   "files.associations": {
-	"fdf.h": "c",
-	"errno.h": "c",
-	"stdio.h": "c"
-},
+    "fdf.h": "c",
+    "errno.h": "c",
+    "stdio.h": "c",
+    "__node_handle": "c"
+  },
   "[c]": {
     "editor.defaultFormatter": "keyhr.42-c-format"
   }
