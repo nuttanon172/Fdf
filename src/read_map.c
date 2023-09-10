@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 17:51:43 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/09 17:51:47 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/10 11:46:33 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,12 @@ void	add_line(char **line_sp, char *line, t_node_z **stack, t_map *map)
 		map_error("Error: Read Map Error", map, *stack);
 }
 
-void	read_map(t_node_z **stack, t_map *map, int fd)
+void	read_map(t_node_z **stack, t_map *map)
 {
 	char	*line;
 	char	**line_sp;
 
-	line = get_next_line(fd);
+	line = get_next_line(map->fd);
 	while (line)
 	{
 		line_sp = ft_split(line, ' ');
@@ -86,6 +86,6 @@ void	read_map(t_node_z **stack, t_map *map, int fd)
 		free(line);
 		free_2d(line_sp);
 		map->height++;
-		line = get_next_line(fd);
+		line = get_next_line(map->fd);
 	}
 }

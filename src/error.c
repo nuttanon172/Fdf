@@ -6,7 +6,7 @@
 /*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:49:43 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/09 16:34:31 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/10 11:56:09 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	free_map(t_map *map)
 			free(map->z);
 		if (map->color)
 			free(map->color);
+		if (map->fd)
+			close(map->fd);
 		free(map);
 	}
 }

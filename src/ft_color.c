@@ -6,7 +6,7 @@
 /*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:36:17 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/09 15:58:23 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/10 11:43:11 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	ft_hexnbr(char c, int base_num)
 
 int	ft_format(char *s, int base)
 {
-	size_t	i;
-	size_t	digit;
+	int	i;
+	int	digit;
 
 	i = 0;
 	digit = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 16:52:12 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/09 10:53:08 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/10 11:46:24 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	main(int ac, char **av)
 	if (fd < 0)
 		exit_error("Error: Open file error");
 	fdf.stack = NULL;
-	map_init(&fdf);
-	read_map(&fdf.stack, fdf.map, fd);
+	map_init(&fdf, fd);
+	read_map(&fdf.stack, fdf.map);
 	read_stack(&fdf.stack, fdf.map);
 	mlx_fdf(&fdf);
 	return (0);

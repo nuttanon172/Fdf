@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 15:19:33 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/09 18:13:52 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/09/10 11:45:57 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_img
 
 typedef struct s_map
 {
+	int	fd;
 	int	width;
 	int	height;
 	int	scale;
@@ -91,7 +92,7 @@ int			ft_color(char *str, int base_num);
 t_node_z	*new_node(char *str, t_map *map, t_node_z **stack);
 int			push(t_node_z **stack, t_node_z *new);
 void		add_line(char **line_sp, char *line, t_node_z **stack, t_map *map);
-void		read_map(t_node_z **stack, t_map *map, int fd);
+void		read_map(t_node_z **stack, t_map *map);
 
 /* read_stack */
 void		read_stack(t_node_z **stack, t_map *map);
@@ -113,7 +114,7 @@ void		bresenham(t_point p1, t_point p2, t_data *data);
 int			get_color(t_point cur, t_point start, t_point end, t_point delta);
 
 /* mlx_init */
-void		map_init(t_data *fdf);
+void		map_init(t_data *fdf, int fd);
 int			ft_absolute(int nbr);
 
 #endif
