@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 12:32:54 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/09 16:57:00 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/11/10 23:53:06 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	map_scale(t_map *map)
 	int	width;
 	int	w;
 	int	h;
+	int	z_abs;
 
 	width = WIDTH;
 	height = HEIGHT;
@@ -31,6 +32,9 @@ void	map_scale(t_map *map)
 		map->scale = w;
 	else
 		map->scale = h;
+	z_abs = ft_absolute(map->z_max);
+	if (z_abs >= (map->height / 2))
+		map->scale = HEIGHT / map->z_max / 3;
 }
 
 void	mlx_fdf(t_data *fdf)

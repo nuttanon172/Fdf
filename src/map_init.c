@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntairatt <ntairatt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ntairatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 11:12:00 by ntairatt          #+#    #+#             */
-/*   Updated: 2023/09/10 11:38:19 by ntairatt         ###   ########.fr       */
+/*   Updated: 2023/11/10 23:48:20 by ntairatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	map_init(t_data *fdf, int fd)
 	fdf->map->width = 0;
 	fdf->map->height = 0;
 	fdf->map->scale = 0;
+	fdf->map->z_max = 0;
 	fdf->map->z = NULL;
 	fdf->map->color = NULL;
 	fdf->map->fd = fd;
